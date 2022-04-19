@@ -11,27 +11,27 @@
     <form class="form-container" (ngSubmit)="addRestaurant()">
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+        <ion-input type="text" [(ngModel)]="name" name="name" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Address</ion-label>
-        <ion-input type="text" [(ngModel)]="address" name="address"></ion-input>
+        <ion-input type="text" [(ngModel)]="address" name="address" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Description</ion-label>
-        <ion-textarea type="text" [(ngModel)]="description" name="description"></ion-textarea>
+        <ion-textarea type="text" [(ngModel)]="description" name="description" required></ion-textarea>
       </ion-item>
 
       <ion-item>
         <ion-label>Phone</ion-label>
-        <ion-input type="text" [(ngModel)]="phone" name="phone"></ion-input>
+        <ion-input type="text" [(ngModel)]="phone" name="phone" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Tag</ion-label>
-        <ion-select [(ngModel)]="tag" name="tag">
+        <ion-select [(ngModel)]="tag" name="tag" required>
           <ion-select-option value="Korean">Korean</ion-select-option>
           <ion-select-option value="Japanese">Japanese</ion-select-option>
           <ion-select-option value="Fast Food">Fast Food</ion-select-option>

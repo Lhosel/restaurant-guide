@@ -17,7 +17,9 @@ export class DetailsPage implements OnInit {
     this.restaurant = JSON.parse(this.activatedRouter.snapshot.paramMap.get('restaurant'));
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.rating = this.restaurant.rating
+  }
 
   async setRating() {
     let restaurant = { "name": this.restaurant.name, "address": this.restaurant.address, "description": this.restaurant.description, "phone": this.restaurant.phone, "tag": this.restaurant.tag, "rating": this.rating }
