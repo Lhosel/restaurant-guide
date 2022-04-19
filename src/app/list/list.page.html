@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Restaurants</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <ion-searchbar (ionChange)="search($event)"></ion-searchbar>
+    <div class="card" *ngFor="let restaurant of restaurants">
+      <img class="food-img" *ngIf="restaurant.tag === 'Korean'" src="../assets/images/korean-img.jpg" alt="korean food">
+      <img class="food-img" *ngIf="restaurant.tag === 'Chinese'" src="../assets/images/chinese-img.jpg"
+        alt="chinese food">
+      <img class="food-img" *ngIf="restaurant.tag === 'Japanese'" src="../assets/images/japanese-img.jpg"
+        alt="japanese food">
+      <img class="food-img" *ngIf="restaurant.tag === 'Italian'" src="../assets/images/italian-img.jpg"
+        alt="italian food">
+      <img class="food-img" *ngIf="restaurant.tag === 'Jamaican'" src="../assets/images/jamaican-img.jpg"
+        alt="jamaican food">
+      <img class="food-img" *ngIf="restaurant.tag === 'Fast Food'" src="../assets/images/fastfood-img.jpg"
+        alt="fast food">
+      <p>{{restaurant.name}}</p>
+      <p>{{restaurant.tag}}</p>
+      <img class="rating-img" *ngIf="restaurant.rating === '5'" src="../assets/images/five-star.JPG" alt="five stars">
+      <img class="rating-img" *ngIf="restaurant.rating === '4'" src="../assets/images/four-star.JPG" alt="four stars">
+      <img class="rating-img" *ngIf="restaurant.rating === '3'" src="../assets/images/three-star.JPG" alt="three stars">
+      <img class="rating-img" *ngIf="restaurant.rating === '2'" src="../assets/images/two-star.JPG" alt="two stars">
+      <img class="rating-img" *ngIf="restaurant.rating === '1'" src="../assets/images/one-star.JPG" alt="one star">
+      <br>
+      <button class="delete-btn" (click)="delete(restaurant)">Delete</button>
+      <button (click)="view(restaurant)">View</button>
+    </div>
+  </div>
+</ion-content>

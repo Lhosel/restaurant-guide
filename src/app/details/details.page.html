@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <img *ngIf="restaurant.tag === 'Korean'" src="../assets/images/korean-img.jpg" alt="korean food">
+    <img *ngIf="restaurant.tag === 'Chinese'" src="../assets/images/chinese-img.jpg" alt="chinese food">
+    <img *ngIf="restaurant.tag === 'Japanese'" src="../assets/images/japanese-img.jpg" alt="japanese food">
+    <img *ngIf="restaurant.tag === 'Italian'" src="../assets/images/italian-img.jpg" alt="italian food">
+    <img *ngIf="restaurant.tag === 'Jamaican'" src="../assets/images/jamaican-img.jpg" alt="jamaican food">
+    <img *ngIf="restaurant.tag === 'Fast Food'" src="../assets/images/fastfood-img.jpg" alt="fast food">
+    <h1>{{restaurant.name}} - {{restaurant.address}}</h1>
+    <p>{{restaurant.description}}</p>
+
+    <button class="edit-btn" type="button" (click)="share()"><img class="edit-img" src="../assets/images/share-img.png"
+        alt="image of a share icon"></button>
+
+    <button class="edit-btn" type="button" (click)="edit()"><img class="edit-img" src="../assets/images/edit-img.png"
+        alt="image of a pencil edit"></button>
+
+    <button class="edit-btn" type="button" (click)="directions(restaurant)"><img class="edit-img"
+        src="../assets/images/directions-img.png" alt="image of map directions"></button>
+
+    <div class="rating">
+      <form (ngSubmit)="setRating()">
+        <ion-label>Select Rating</ion-label>
+        <ion-select placeholder="5 - 1" [(ngModel)]="rating" name="rating">
+          <ion-select-option value=5>5</ion-select-option>
+          <ion-select-option value=4>4</ion-select-option>
+          <ion-select-option value=3>3</ion-select-option>
+          <ion-select-option value=2>2</ion-select-option>
+          <ion-select-option value=1>1</ion-select-option>
+        </ion-select>
+        <button class="cancel-btn" type="button" (click)="home()">Cancel</button>
+        <button class="rate-btn" ion-button type="submit" block>Rate</button>
+      </form>
+    </div>
+  </div>
+</ion-content>

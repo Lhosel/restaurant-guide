@@ -1,0 +1,48 @@
+agm-map {
+    height: 300px;
+}
+
+input {
+    padding: 5px;
+    margin-left: 10px;
+    background-color: #FFFFFF;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+input:focus {
+    outline: none;
+    border-color: #398ebe;
+}
+
+.address-input {
+    padding: 10px;
+}
+
+.map {
+    padding: 15px;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.24);
+}
+
+button {
+    padding: 1rem;
+    margin-right: 15px;
+    background: #9A3E49;
+    color: #FFFF;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    justify-content: space-between;
+    width: 100px;
+    margin-left: 38.5%;
+    margin-top: 12%;
+}
+
+button:hover {
+    background: #6d3138;
+    transition: 0.2s;
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}

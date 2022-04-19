@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <h1>Edit Restaurant</h1>
+    <br>
+    <form class="form-container" (ngSubmit)="editRestaurant()">
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Address</ion-label>
+        <ion-input type="text" [(ngModel)]="address" name="address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-textarea type="text" [(ngModel)]="description" name="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Phone</ion-label>
+        <ion-input type="text" [(ngModel)]="phone" name="phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tag</ion-label>
+        <ion-select [(ngModel)]="tag" name="tag">
+          <ion-select-option value="Korean">Korean</ion-select-option>
+          <ion-select-option value="Japanese">Japanese</ion-select-option>
+          <ion-select-option value="Fast Food">Fast Food</ion-select-option>
+          <ion-select-option value="Italian">Italian</ion-select-option>
+          <ion-select-option value="Chinese">Chinese</ion-select-option>
+          <ion-select-option value="Jamaican">Jamaican</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <br>
+      <button class="cancel-btn" type="button" (click)="home()">Cancel</button>
+      <button ion-button type="submit" block>Edit</button>
+    </form>
+  </div>
+</ion-content>

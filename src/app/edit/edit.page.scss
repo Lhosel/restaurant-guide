@@ -1,0 +1,45 @@
+#container {
+    text-align: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+}
+
+.form-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+button {
+    padding: 1rem;
+    margin-top: 20px;
+    background: #6677EA;
+    color: #FFFF;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    justify-content: space-between;
+    width: 100px;
+}
+
+button:hover {
+    background: #4b57a8;
+    transition: 0.2s;
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+
+.cancel-btn {
+    margin-right: 15px;
+    background: #9A3E49;
+}
+
+.cancel-btn:hover {
+    background: #6d3138;
+}
