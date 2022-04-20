@@ -38,7 +38,6 @@ export class MapPage implements OnInit {
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
-      console.log(this.setCurrentLocation);
       this.geoCoder = new google.maps.Geocoder;
 
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement);
@@ -69,17 +68,12 @@ export class MapPage implements OnInit {
       this.currLongitude = res.coords.longitude;
       this.currLocation = { lat: res.coords.latitude, lng: res.coords.longitude };
     }).catch((e) => {
-      console.log(e);
     });
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((postion) => {
         this.currLatitude = postion.coords.latitude;
-        console.log(postion);
-        console.log(postion.coords.latitude);
-        console.log(typeof (postion.coords.latitude));
         this.currLongitude = postion.coords.longitude;
         this.currLocation = { lat: postion.coords.latitude, lng: postion.coords.longitude };
-        console.log(this.currLocation);
         this.zoom = 15;
       });
     }
@@ -87,8 +81,6 @@ export class MapPage implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 12;
