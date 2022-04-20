@@ -12,6 +12,8 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AgmDirectionModule } from 'agm-direction';
 import { AgmCoreModule } from '@agm/core';
 
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,8 +22,8 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyBQ3w0_vQkhfu7ZhRyyHCuk5LD2boUYn8w',
       libraries: ['places']
     }),
-  AgmDirectionModule],
-  providers: [SocialSharing, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+    AgmDirectionModule],
+  providers: [SocialSharing, Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

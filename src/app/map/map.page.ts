@@ -1,6 +1,7 @@
 import { MapsAPILoader } from '@agm/core';
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-map',
@@ -28,7 +29,7 @@ export class MapPage implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private activatedRouter: ActivatedRoute, private router: Router) {
+  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private activatedRouter: ActivatedRoute, private router: Router, private geo: Geolocation) {
     this.restaurant = JSON.parse(this.activatedRouter.snapshot.paramMap.get('restaurant'));
   }
 
@@ -60,14 +61,27 @@ export class MapPage implements OnInit {
   }
 
   setCurrentLocation() {
+    this.geo.getCurrentPosition({
+      timeout: 1000,
+      enableHighAccuracy: true
+    }).then((res) => {
+      this.currLatitude = res.coords.latitude;
+      this.currLongitude = res.coords.longitude;
+      this.currLocation = { lat: res.coords.latitude, lng: res.coords.longitude };
+    }).catch((e) => {
+      console.log(e);
+    });
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((postion) => {
         this.currLatitude = postion.coords.latitude;
+        console.log(postion);
+        console.log(postion.coords.latitude);
+        console.log(typeof (postion.coords.latitude));
         this.currLongitude = postion.coords.longitude;
         this.currLocation = { lat: postion.coords.latitude, lng: postion.coords.longitude };
         console.log(this.currLocation);
         this.zoom = 15;
-      })
+      });
     }
   }
 
