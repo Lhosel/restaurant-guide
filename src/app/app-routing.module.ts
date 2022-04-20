@@ -29,15 +29,15 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+    loadChildren: () => import('./about/about.module').then(m => m.AboutPageModule)
   },
   {
     path: 'map',
-    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+    loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
   },
   {
     path: 'map/:restaurant',
-    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+    loadChildren: () => import('./map/map.module').then(m => m.MapPageModule)
   }
 ];
 

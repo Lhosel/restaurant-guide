@@ -40,10 +40,8 @@
         <span class="error" *ngIf="isSubmitted && errorControl.phone.errors?.required">
           phone is required.
         </span>
-        <span class="error" *ngIf="isSubmitted && errorControl.phone.errors?.pattern">
-          phone must be valid.
-        </span>
-        <span class="error" *ngIf="isSubmitted && errorControl.phone.errors?.minlength">
+        <span class="error"
+          *ngIf="isSubmitted && errorControl.phone.errors?.pattern || errorControl.phone.errors?.minlength">
           phone must be valid.
         </span>
       </ion-item>
