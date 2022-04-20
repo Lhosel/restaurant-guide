@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-add',
@@ -14,23 +15,49 @@ export class AddPage implements OnInit {
   tag?: string;
   rating?: string = "5";
 
-  constructor(public toastController: ToastController) { }
+  ionicForm: FormGroup;
+  isSubmitted = false;
 
-  ngOnInit() { }
+  constructor(public toastController: ToastController, public formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.ionicForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(10)]],
+      tag: ['', [Validators.required]]
+    });
+  }
+
+  get errorControl() {
+    return this.ionicForm.controls;
+  }
 
   async addRestaurant() {
-    let restaurant = { "name": this.name, "address": this.address, "description": this.description, "phone": this.phone, "tag": this.tag, "rating": this.rating }
+    this.isSubmitted = true;
+    if (!this.ionicForm.valid) {
+      var toast = await this.toastController.create({
+        message: 'Please input all fields',
+        duration: 2000
+      });
 
-    window.localStorage.setItem(restaurant.name, JSON.stringify(restaurant));
+      toast.present();
+      return false;
+    } else {
+      let restaurant = { "name": this.name, "address": this.address, "description": this.description, "phone": this.phone, "tag": this.tag, "rating": this.rating }
 
-    const toast = await this.toastController.create({
-      message: 'Restaurant Successfully Added',
-      duration: 2000
-    });
+      window.localStorage.setItem(restaurant.name, JSON.stringify(restaurant));
 
-    toast.present();
+      var toast = await this.toastController.create({
+        message: 'Restaurant Successfully Added',
+        duration: 2000
+      });
 
-    window.location.href = '/list';
+      toast.present();
+
+      window.location.href = '/list';
+    }
   }
 
   home() {

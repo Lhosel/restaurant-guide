@@ -8,30 +8,49 @@
   <div id="container">
     <h1>Add Restaurant</h1>
     <br>
-    <form class="form-container" (ngSubmit)="addRestaurant()">
+    <form [formGroup]="ionicForm" class="form-container" (ngSubmit)="addRestaurant()">
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-input type="text" [(ngModel)]="name" name="name" required></ion-input>
+        <ion-input type="text" [(ngModel)]="name" name="name" formControlName="name" required></ion-input>
+        <span class="error" *ngIf="isSubmitted && errorControl.name.errors?.required">
+          name is required.
+        </span>
       </ion-item>
 
       <ion-item>
         <ion-label>Address</ion-label>
-        <ion-input type="text" [(ngModel)]="address" name="address" required></ion-input>
+        <ion-input type="text" [(ngModel)]="address" name="address" formControlName="address" required></ion-input>
+        <span class="error" *ngIf="isSubmitted && errorControl.address.errors?.required">
+          address is required.
+        </span>
       </ion-item>
 
       <ion-item>
         <ion-label>Description</ion-label>
-        <ion-textarea type="text" [(ngModel)]="description" name="description" required></ion-textarea>
+        <ion-textarea type="text" [(ngModel)]="description" name="description" formControlName="description" required>
+        </ion-textarea>
+        <span class="error" *ngIf="isSubmitted && errorControl.description.errors?.required">
+          description is required.
+        </span>
       </ion-item>
 
       <ion-item>
         <ion-label>Phone</ion-label>
-        <ion-input type="text" [(ngModel)]="phone" name="phone" required></ion-input>
+        <ion-input type="text" [(ngModel)]="phone" name="phone" formControlName="phone" required></ion-input>
+        <span class="error" *ngIf="isSubmitted && errorControl.phone.errors?.required">
+          phone is required.
+        </span>
+        <span class="error" *ngIf="isSubmitted && errorControl.phone.errors?.pattern">
+          phone must be valid.
+        </span>
+        <span class="error" *ngIf="isSubmitted && errorControl.phone.errors?.minlength">
+          phone must be valid.
+        </span>
       </ion-item>
 
       <ion-item>
         <ion-label>Tag</ion-label>
-        <ion-select [(ngModel)]="tag" name="tag" required>
+        <ion-select [(ngModel)]="tag" name="tag" formControlName="tag" required>
           <ion-select-option value="Korean">Korean</ion-select-option>
           <ion-select-option value="Japanese">Japanese</ion-select-option>
           <ion-select-option value="Fast Food">Fast Food</ion-select-option>
@@ -39,6 +58,9 @@
           <ion-select-option value="Chinese">Chinese</ion-select-option>
           <ion-select-option value="Jamaican">Jamaican</ion-select-option>
         </ion-select>
+        <span class="error" *ngIf="isSubmitted && errorControl.tag.errors?.required">
+          tag is required.
+        </span>
       </ion-item>
 
       <br>

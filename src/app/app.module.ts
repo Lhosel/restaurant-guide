@@ -13,6 +13,7 @@ import { AgmDirectionModule } from 'agm-direction';
 import { AgmCoreModule } from '@agm/core';
 
 import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
       libraries: ['places']
     }),
     AgmDirectionModule],
-  providers: [SocialSharing, Geolocation, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [SocialSharing, Geolocation, FormsModule, ReactiveFormsModule, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
