@@ -11,7 +11,7 @@
     <form [formGroup]="ionicForm" class="form-container" (ngSubmit)="editRestaurant()">
       <ion-item>
         <ion-label>Name</ion-label>
-        <ion-input type="text" [(ngModel)]="name" name="name" formControlName="name" required></ion-input>
+        <ion-input type="text" [(ngModel)]="name" name="name" formControlName="name" [disabled]="true"></ion-input>
         <span class="error" *ngIf="isSubmitted && errorControl.name.errors?.required">
           name is required.
         </span>
